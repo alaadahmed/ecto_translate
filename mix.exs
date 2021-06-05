@@ -32,7 +32,6 @@ defmodule EctoTranslate.Mixfile do
           :race_conditions
         ]
       ]
-
     ]
   end
 
@@ -40,23 +39,21 @@ defmodule EctoTranslate.Mixfile do
   defp elixirc_paths(_), do: ["lib"]
 
   def application do
-    [applications: applications(Mix.env())]
+    [
+      extra_applications: [:logger, :runtime_tools]
+    ]
   end
-
-  defp applications(:test), do: [:logger, :ecto_sql, :postgrex]
-  defp applications(_), do: [:logger]
 
   defp deps do
     [
       {:credo, ">= 0.0.0", only: [:dev, :test]},
       {:dialyxir, "~> 1.1.0", only: [:dev], runtime: false},
       {:earmark, ">= 0.0.0", only: :dev},
-      {:ecto, ">=3.0.7"},
-      {:ecto_sql, ">=3.0.5"},
+      {:ecto_sql, ">=3.6.2"},
       {:ex_doc, ">= 0.0.0", only: :dev},
       {:excoveralls, ">= 0.0.0 ", only: :test},
-      {:gettext, "~> 0.16"},
-      {:postgrex, ">= 0.14.1", only: [:dev, :test]}
+      {:gettext, "~> 0.18"},
+      {:postgrex, ">= 0.14.1"}
     ]
   end
 
